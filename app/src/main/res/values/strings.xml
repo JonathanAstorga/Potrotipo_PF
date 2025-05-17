@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PrototipoPFDSI</string>
+    <string name="login">Inicio de Sesión</string>
+
+    <string name="tituloAPP">LaboraSegura</string>
+    <string name="hintBuscador">🔎  Busca empleos seguros...</string>
+</resources>
