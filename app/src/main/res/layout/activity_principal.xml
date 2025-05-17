@@ -1,60 +1,212 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".PrincipalActivity">
 
+    <!-- Contenido scrollable -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/linearBtn"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/morado"
+                android:padding="15dp"
+                android:layout_marginTop="25dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tituloAPP"
+                    android:textSize="25sp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-condensed-medium" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:id="@+id/btnPerfil"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/ic_account" />
+            </LinearLayout>
+
+            <!-- Buscador -->
+            <EditText
+                android:id="@+id/edtBuscador"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_buscador"
+                android:hint="@string/hintBuscador" />
+
+            <!-- Filtros -->
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupFiltros"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="8dp"
+                app:chipSpacingHorizontal="8dp"
+                app:chipSpacingVertical="8dp"
+                app:singleSelection="false"
+                app:selectionRequired="false">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipTodos"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Todos"
+                    android:textSize="16sp"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp"
+                    app:chipCornerRadius="16dp"
+                    android:textColor="@color/chip_text_color"
+                    app:chipBackgroundColor="@color/chip_selector"
+                    app:checkedIconVisible="false"
+                    />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipTiempoCompleto"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tiempo Completo"
+                    android:textSize="16sp"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp"
+                    app:chipCornerRadius="16dp"
+                    android:textColor="@color/chip_text_color"
+                    app:chipBackgroundColor="@color/chip_selector"
+                    app:checkedIconVisible="false" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipMedioTiempo"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Medio Tiempo"
+                    android:textSize="16sp"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp"
+                    app:chipCornerRadius="16dp"
+                    android:textColor="@color/chip_text_color"
+                    app:chipBackgroundColor="@color/chip_selector"
+                    app:checkedIconVisible="false" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipRemoto"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Remoto"
+                    android:textSize="16sp"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp"
+                    app:chipCornerRadius="16dp"
+                    android:textColor="@color/chip_text_color"
+                    app:chipBackgroundColor="@color/chip_selector"
+                    app:checkedIconVisible="false" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipPresencial"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Presencial"
+                    android:textSize="16sp"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp"
+                    app:chipCornerRadius="16dp"
+                    android:textColor="@color/chip_text_color"
+                    app:chipBackgroundColor="@color/chip_selector"
+                    app:checkedIconVisible="false" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <!-- Grid de trabajos -->
+            <GridView
+                android:id="@+id/gvTrabajos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:numColumns="2"
+                android:verticalSpacing="12dp"
+                android:horizontalSpacing="12dp"
+                android:stretchMode="columnWidth"
+                android:padding="12dp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Botón fijo abajo -->
     <LinearLayout
+        android:id="@+id/linearBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
         android:background="@color/morado"
-        android:padding="15dp"
-        android:layout_marginTop="25dp"
-        >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tituloAPP"
-            android:textSize="25sp"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif-condensed-medium"
-            />
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+        android:padding="8dp">
 
         <ImageButton
-            android:id="@+id/imgButtonPerfil"
-            android:layout_width="50dp"
-            android:layout_marginRight="10dp"
-            android:layout_height="50dp"
-            android:background="@drawable/ic_account"
+            android:id="@+id/btnHome"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:contentDescription="Botón"
+            android:layout_marginLeft="15dp"
+            android:background="@mipmap/ic_btn_home"
             />
+
+        <View
+            android:layout_width="90dp"
+            android:layout_height="0dp"
+            />
+
+        <ImageButton
+            android:id="@+id/btnMap"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@mipmap/ic_btn_map"
+            />
+
+        <View
+            android:layout_width="90dp"
+            android:layout_height="0dp"
+            />
+
+        <ImageButton
+            android:id="@+id/btnRese"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@mipmap/ic_btn_resenas"
+            />
+
 
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/edtBuscador"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/round_buscador"
-        android:hint="@string/hintBuscador"
-        />
-
-
-
-</LinearLayout>
+</RelativeLayout>
