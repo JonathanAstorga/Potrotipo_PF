@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.MotionEvent
 import android.view.animation.AnimationUtils
 import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -24,6 +26,9 @@ class MainActivity : AppCompatActivity() {
         val btnInicio: Button = findViewById(R.id.btnIniciar)
         val animScale = AnimationUtils.loadAnimation(this, R.anim.anim_press_button)
 
+        val edtCorreo: EditText = findViewById(R.id.edtCorreo)
+        val edtContra: EditText = findViewById(R.id.edtPassword)
+
         btnInicio.setOnTouchListener { v, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> v.startAnimation(animScale)
@@ -33,8 +38,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnInicio.setOnClickListener(){
-            var intent: Intent = Intent(this, PrincipalActivity::class.java)
-            startActivity(intent)
+            if (!edtContra.text.isBlank() || !edtCorreo.text.isBlank()) {
+                if(edtContra.text.isBlank() && !edtCorreo.text.isBlank() || edtCorreo.text.isBlank() && !edtContra.text.isBlank()){
+                    Toast.makeText(this, "Uno de tus campos es invalido", Toast.LENGTH_SHORT).show()
+                }
+                else{
+                    var intent: Intent = Intent(this, PrincipalActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+            else{
+                Toast.makeText(this, "Rellena los campos", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
