@@ -4,4 +4,5 @@
 
     <string name="tituloAPP">LaboraSegura</string>
     <string name="hintBuscador">🔎  Busca empleos seguros...</string>
+    <string name="hintBuscadorRese">🔎  Busca tus reseñas...</string>
 </resources>

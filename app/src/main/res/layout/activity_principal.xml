@@ -150,16 +150,15 @@
                     app:checkedIconVisible="false" />
             </com.google.android.material.chip.ChipGroup>
 
-            <!-- Grid de trabajos -->
-            <GridView
-                android:id="@+id/gvTrabajos"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:numColumns="2"
-                android:verticalSpacing="12dp"
-                android:horizontalSpacing="12dp"
-                android:stretchMode="columnWidth"
-                android:padding="12dp" />
+                android:layout_height="match_parent"
+                android:text="Aqui van los trabajos disponibles segun los filtros seleccionados"
+                android:textSize="40sp"
+                android:fontFamily="sans-serif-black"
+                android:padding="10dp"
+                android:textAlignment="center"
+                />
         </LinearLayout>
     </ScrollView>
 

@@ -11,11 +11,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class PrincipalActivity : AppCompatActivity() {
+class AccountActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_principal)
+        setContentView(R.layout.activity_account)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -30,7 +30,8 @@ class PrincipalActivity : AppCompatActivity() {
         val btnPerfil: ImageButton = findViewById(R.id.btnPerfil)
 
         btnHome.setOnClickListener{
-            Toast.makeText(this, "Ya estas en esta ventana", Toast.LENGTH_SHORT).show()
+            var intent = Intent(this, PrincipalActivity::class.java) as Intent
+            startActivity(intent)
         }
 
         btnMap.setOnClickListener{
@@ -44,8 +45,7 @@ class PrincipalActivity : AppCompatActivity() {
         }
 
         btnPerfil.setOnClickListener{
-            var intent = Intent(this, AccountActivity::class.java) as Intent
-            startActivity(intent)
+            Toast.makeText(this, "Ya estas en esta ventana", Toast.LENGTH_SHORT).show()
         }
 
         btnHome.setOnTouchListener { v, event ->
